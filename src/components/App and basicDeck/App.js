@@ -1,8 +1,6 @@
 import react from "react";
-import "../assets/styles/reset.css"
-import "../assets/styles/style.css"
-import Flashcards from "./Flashcards";
-import Menu from "./Menu";
+import Main from "../Main/Main";
+import Menu from "../Menu/Menu";
 
 
 
@@ -16,7 +14,7 @@ export default function App (){
             {init ?
                 <Menu setInit={setInit} />
                 :
-                <Flashcards />
+                <Main />
             }
         </>
     )

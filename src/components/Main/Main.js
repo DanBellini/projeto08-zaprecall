@@ -42,7 +42,7 @@ export default function Main (){
                                                      index = {index}
                                                      tapCard = {tapCard}
                                                      question ={value.question}
-
+                                                     reply ={value.reply}
             />))}
             </div>
             <Bottom />

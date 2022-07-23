@@ -25,6 +25,7 @@ export default function Flashcards ({index, asking, select, tapCard, question}){
             { !select ? ( 
                 <Card key = {index}
                       asking={asking}
+                      index={index}
                       tapCard={tapCard}
                       />) : (
                 <CardAsking question={question}/>)}

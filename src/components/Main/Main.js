@@ -15,12 +15,12 @@ export default function Main (){
             if(index === selectIndex){
                 return{
                     ...value,
-                    select:true
+                    select:true,
                 }
             } else {
                 return{
                     ...value,
-                    select:false
+                    select:false,
                 }
             }
         })

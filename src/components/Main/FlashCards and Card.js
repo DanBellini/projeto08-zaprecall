@@ -1,16 +1,20 @@
 import React from "react"
 import setinha from "../../assets/images/setinha.png"
+import Status from "./Status"
 
-function Card({asking, index, tapCard}){
+
+
+
+function Card({asking, index, tapCard, status}){
     return(
-        <div className="card" onClick={() => tapCard(index)}>
+        <div className={`card ${status}`} onClick={() => tapCard(index)}>
             <p>{asking}</p>
-            <ion-icon name="play-outline"></ion-icon>
+            <Status status={status}/>
         </div>
     )
 }
 
-function CardAsking ({question, reply}){
+function CardAsking ({question, reply, index, yourRespond}){
 
     const[respond, setRespond] = React.useState(false )
 
@@ -25,9 +29,9 @@ function CardAsking ({question, reply}){
         <div className="question">
             <p>{reply}</p>
             <div className="reply">
-                <div className="red"><span>Não lembrei</span></div>
-                <div className="yellow"><span>Quase não lembrei</span></div>
-                <div className="green"><span>Zap!</span></div>
+                <div className="red" onClick={()=> yourRespond(index, "red")}><span>Não lembrei</span></div>
+                <div className="yellow" onClick={()=> yourRespond(index, "yellow")}><span>Quase não lembrei</span></div>
+                <div className="green"onClick={()=> yourRespond(index, "green")}><span>Zap!</span></div>
             </div>
         </div>)
         
@@ -38,7 +42,7 @@ function CardAsking ({question, reply}){
 }
 
 
-export default function Flashcards ({index, asking, select, tapCard, question, reply}){
+export default function Flashcards ({index, asking, select, tapCard, question, reply, status, yourRespond}){
     return (
         <>  
             { !select ? ( 
@@ -46,9 +50,13 @@ export default function Flashcards ({index, asking, select, tapCard, question, r
                       asking={asking}
                       index={index}
                       tapCard={tapCard}
+                      status={status}
                       />) : (
-                <CardAsking question={question}
-                            reply={reply}            
+                <CardAsking key={index}
+                            question={question}
+                            reply={reply} 
+                            yourRespond={yourRespond}
+                            index={index}           
             />)}
         </>
     )

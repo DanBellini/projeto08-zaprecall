@@ -4,8 +4,6 @@ import originalDeck from "../App and basicDeck/Deck"
 import Flashcards from "./FlashCards and Card"
 import Bottom from "./Bottom"
 
-
-
 export default function Main (){
 
     const [deck,setDeck] = React.useState(originalDeck);
@@ -16,6 +14,25 @@ export default function Main (){
                 return{
                     ...value,
                     select:true,
+                }
+            } else {
+                return{
+                    ...value,
+                    select:false,
+                }
+            }
+        })
+
+        setDeck([...newDeck])
+    }
+
+    function yourRespond (selectIndex, status){
+        let newDeck = deck.map((value, index) => {
+            if(index === selectIndex){
+                return{
+                    ...value,
+                    select:false,
+                    status:status
                 }
             } else {
                 return{
@@ -43,6 +60,8 @@ export default function Main (){
                                                      tapCard = {tapCard}
                                                      question ={value.question}
                                                      reply ={value.reply}
+                                                     status = {value.status}
+                                                     yourRespond = {yourRespond}
             />))}
             </div>
             <Bottom />

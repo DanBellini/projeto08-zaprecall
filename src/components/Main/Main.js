@@ -7,6 +7,8 @@ import Bottom from "./Bottom"
 export default function Main (){
 
     const [deck,setDeck] = React.useState(originalDeck);
+    const [answered, setAnswered] = React.useState(0);
+    const [renderStatus, setRenderStatus] = React.useState([])
 
     function tapCard (selectIndex){
         let newDeck = deck.map((value, index) => {
@@ -43,6 +45,8 @@ export default function Main (){
         })
 
         setDeck([...newDeck])
+        setAnswered(answered+1)
+        setRenderStatus([...renderStatus, status])
     }
 
     return (
@@ -64,7 +68,9 @@ export default function Main (){
                                                      yourRespond = {yourRespond}
             />))}
             </div>
-            <Bottom />
+            <Bottom answered={answered}
+                    renderStatus={renderStatus}
+                    />
         </>
     )
 }

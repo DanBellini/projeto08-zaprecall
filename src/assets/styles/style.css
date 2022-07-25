@@ -211,6 +211,7 @@ span{
     align-content: center;
     text-align: center;
     justify-content: space-around;
+    cursor:pointer;
 
     border-radius: 5px;
 }

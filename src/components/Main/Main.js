@@ -4,6 +4,8 @@ import originalDeck from "../App and basicDeck/Deck"
 import Flashcards from "./FlashCards and Card"
 import Bottom from "./Bottom"
 
+originalDeck = originalDeck.sort(()=> Math.random()- 0.5)
+
 export default function Main (){
 
     const [deck,setDeck] = React.useState(originalDeck);
